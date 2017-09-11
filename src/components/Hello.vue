@@ -32,6 +32,15 @@ export default {
     addNew: function () {
       this.todos.push({value: this.newTodo, done: false})
       this.newTodo = ''
+      Store.save()
+    }
+  },
+  watch:{
+    items:{
+      handler: function(){
+
+      },
+      deep
     }
   }
 }

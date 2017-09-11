@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import Store from './store.js'
+console.log(Store)
 import Hello from './components/Hello'
 
 export default {
