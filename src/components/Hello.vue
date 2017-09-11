@@ -11,17 +11,14 @@
 </template>
 
 <script>
+import Store from '../store'
+console.log(Store)
 export default {
   name: 'hello',
   data () {
     return {
       title: 'this is a vue-todolist',
-      todos: [
-        // {value: '阅读一本关于前端开发的书', done: false},
-        // {value: '补充范例代码', done: true},
-        // {value: '写心得', done: false},
-        // {value: '写博客', done: false}
-      ],
+      todos: Store.fetch(),
       newTodo: ''
     }
   },
@@ -32,15 +29,15 @@ export default {
     addNew: function () {
       this.todos.push({value: this.newTodo, done: false})
       this.newTodo = ''
-      Store.save()
     }
   },
-  watch:{
-    items:{
-      handler: function(){
-
+  watch: {
+    todos: {
+      handler: function (todo) {
+        Store.save(todo)
+        // console.log(value, oldValue)
       },
-      deep
+      deep: true
     }
   }
 }
